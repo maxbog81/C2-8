@@ -1,0 +1,39 @@
+﻿<Page x:Class="Employees.PageEmp"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Employees"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="Сотрудники" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="30*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="label" Content="Фильтр по подразделениям:" HorizontalAlignment="Center" Height="24" Margin="97,1,309,0" VerticalAlignment="Top" Width="154"/>
+        <ComboBox x:Name="DeptComboFiltr" IsEditable="True" DisplayMemberPath="dept" HorizontalAlignment="Center" Height="20" Margin="180,5,0,0" VerticalAlignment="Top" Width="210" SelectionChanged="DeptComboFiltr_SelectionChanged" />
+
+        <DataGrid x:Name="EmpDataGrid" Grid.Column="0" IsReadOnly="True" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}"  HorizontalAlignment="Center" Width="560" Margin="0,34,0,0" >
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="idColumn" Binding="{Binding id}" Header="Id" Width="85" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="fIOColumn" Binding="{Binding name}" Header="ФИО" Width="250"/>
+                <DataGridTextColumn x:Name="DeptColumn" Binding="{Binding dept}" Header="Подразделение" Width="200"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Column="1">
+            <Label x:Name="EmpLabel" Content="Сотрудник:" HorizontalContentAlignment="Center"  Margin="1" />
+            <ComboBox x:Name="EmpCombo" Margin="40,5,40,5" IsEditable="True" DisplayMemberPath="name"/>
+            <Label x:Name="DeptLabel" Content="Подразделение:" HorizontalContentAlignment="Center"  Margin="1" />
+            <ComboBox x:Name="DeptCombo" Margin="40,5,40,5" IsEditable="True" DisplayMemberPath="dept"/>
+            <Button x:Name="EmpbtnAdd" Margin="40,5,40,5" Content="Добавить"  ToolTip="Чтобы добавить надо ввести вручную сотрудника в первое поле и выбрать подразделение во 2м поле." Click="EmpbtnAdd_Click"/>
+            <Button x:Name="EmpbtnChg" Margin="40,5,40,5" Content="Изменить"  ToolTip="Изменение выбранной строки по введеным данным" Click="EmpbtnChg_Click"/>
+            <Button x:Name="EmpbtnDel" Margin="40,5,40,5" Content="Удалить"  ToolTip="Удаление выбранного в списке сотрудника" Click="EmpbtnDel_Click"/>
+            <Button x:Name="DeptViewBut" Margin="40,50,40,5" Content="Просмотр подразделений" ToolTip="Просмотр и редактирование подразделений" Height="25" Click="DeptViewBut_Click" />
+        </StackPanel>
+
+    </Grid>
+</Page>
