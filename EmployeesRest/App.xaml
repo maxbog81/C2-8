@@ -1,7 +1,7 @@
-﻿<Application x:Class="Employees.App"
+﻿<Application x:Class="EmployeesRest.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Employees"
+             xmlns:local="clr-namespace:EmployeesRest"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

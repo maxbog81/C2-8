@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace Employees
+namespace WebAPIServiceEmp.Models
 {
-    class Department
+    public class Department
     {
         public string Dept { get; set; }
     }
