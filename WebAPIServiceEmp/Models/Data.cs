@@ -121,7 +121,7 @@ namespace WebAPIServiceEmp.Models
 
         public Department GetDept(string dept)
         {
-            string sql = $@"SELECT * FROM Department WHERE dept={dept}";
+            string sql = $@"SELECT * FROM Department WHERE dept=N'{dept}'";
             Department temp = new Department();
             using (SqlCommand com = new SqlCommand(sql, sqlConnection))
             {

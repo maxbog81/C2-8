@@ -20,8 +20,10 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <StackPanel Grid.Column="2">
-            <Label x:Name="DeptLabel" Content="Подразделение:" HorizontalContentAlignment="Center"  Margin="5" />
+        <StackPanel Grid.Column="1">
+            <Label x:Name="DeptLabel" Content="Подразделение:" HorizontalContentAlignment="Center"  Margin="1" />
+            <TextBox x:Name="DeptTextBox" Margin="40,5,40,5" Height="18" Width="120" HorizontalContentAlignment="Right"/>
+            <Button x:Name="DeptViewbtn" Height="25" Margin="40,5,40,5" Content="Запрос" Click="DeptViewbtn_Click" />
         </StackPanel>
 
     </Grid>

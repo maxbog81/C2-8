@@ -59,5 +59,37 @@ namespace Employees
             return ListDept;
         }
 
+        private async void DeptViewbtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (DeptTextBox.Text != String.Empty)
+            {
+                ObservableCollection<Department> ListDept = new ObservableCollection<Department>();
+                ListDept.Add(await GetDeptAsync(url + $"deptlist/{DeptTextBox.Text}"));
+                DeptDataGrid.ItemsSource = ListDept;
+            }
+            else
+            {
+                ObservableCollection<Department> ListDept = await GetDeptsAsync(url + "deptlist");
+                DeptDataGrid.ItemsSource = ListDept;
+            }
+        }
+
+        static async Task<Department> GetDeptAsync(string path)
+        {
+            Department Dept = null;
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(path);
+                if (response.IsSuccessStatusCode)
+                {
+                    Dept = await response.Content.ReadAsAsync<Department>();
+                }
+            }
+            catch (Exception)
+            {
+            }
+            return Dept;
+        }
+
     }
 }

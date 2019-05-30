@@ -23,6 +23,9 @@
         </DataGrid>
 
         <StackPanel Grid.Column="1">
+            <Label x:Name="IdLabel" Content="Ид сотрудника:" HorizontalContentAlignment="Center"  Margin="1" />
+            <TextBox x:Name="IdEmpTextBox" Margin="40,5,40,5" Height="18" Width="120" HorizontalContentAlignment="Right"/>
+            <Button x:Name="EmpViewbtn" Height="25" Margin="40,5,40,5" Content="Запрос" Click="EmpViewbtn_Click"/>
             <Button x:Name="DeptViewBut" Margin="40,50,40,5" Content="Просмотр подразделений" ToolTip="Просмотр и редактирование подразделений" Height="25" Click="DeptViewBut_Click" />
         </StackPanel>
 

@@ -68,6 +68,38 @@ namespace Employees
             this.NavigationService.Navigate(DepartmentPage);
         }
 
+        private async void EmpViewbtn_Click(object sender, RoutedEventArgs e)
+        {
+            int number;
+            if (IdEmpTextBox.Text != String.Empty && int.TryParse(IdEmpTextBox.Text, out number))
+            {
+                ObservableCollection<Employee> ListEmp = new ObservableCollection<Employee>();
+                ListEmp.Add(await GetEmpAsync(url + $"emplist/{IdEmpTextBox.Text}"));
+                EmpDataGrid.ItemsSource = ListEmp;
+            }
+            else
+            {
+                ObservableCollection<Employee> ListEmp = await GetEmpsAsync(url + "emplist");
+                EmpDataGrid.ItemsSource = ListEmp;
+            }
+        }
+
+        static async Task<Employee> GetEmpAsync(string path)
+        {
+            Employee Emp = null;
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(path);
+                if (response.IsSuccessStatusCode)
+                {
+                    Emp = await response.Content.ReadAsAsync<Employee>();
+                }
+            }
+            catch (Exception)
+            {
+            }
+            return Emp;
+        }
 
     }
 }

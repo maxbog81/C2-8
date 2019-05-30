@@ -35,7 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>adim.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -124,15 +125,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="readme.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Emp.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="adim.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="map.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
