@@ -48,9 +48,9 @@ namespace WebAPIServiceEmp.Models
             return list;
         }
 
-        public Employee GetPeopleById(int Id)
+        public Employee GetEmpById(int Id)
         {
-            string sql = $@"SELECT * FROM People WHERE Id={Id}";
+            string sql = $@"SELECT * FROM Employee WHERE Id={Id}";
             Employee temp = new Employee();
             using (SqlCommand com = new SqlCommand(sql, sqlConnection))
             {
@@ -72,7 +72,7 @@ namespace WebAPIServiceEmp.Models
             return temp;
         }
 
-        public bool AddPeople(Employee Worker)
+        public bool AddEmp(Employee Worker)
         {
             try
             {

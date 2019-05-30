@@ -17,12 +17,12 @@ namespace WebAPIServiceEmp.Controllers
         public List<Employee> Get() => data.GetList();
 
         [Route("getlist/{id}")]
-        public Employee GetPeople(int id) => data.GetPeopleById(id);
+        public Employee GetEmp(int id) => data.GetEmpById(id);
 
-        [Route("addpeople")]
+        [Route("addemp")]
         public HttpResponseMessage Post([FromBody]Employee value)
         {
-            if (data.AddPeople(value))
+            if (data.AddEmp(value))
                 return Request.CreateResponse(HttpStatusCode.Created);
             else return Request.CreateResponse(HttpStatusCode.BadRequest);
         }
