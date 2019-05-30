@@ -27,19 +27,20 @@ namespace Employees
     public partial class PageEmp : Page
     {
         static HttpClient client = new HttpClient();
+        string url = "http://localhost:11263/";
         public PageEmp()
         {
             InitializeComponent();
-            client.BaseAddress = new Uri("http://localhost:11263/");
+            //client.BaseAddress = new Uri("http://localhost:11263/");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            //ObservableCollection<Employee> ListEmp = await GetProductsAsync(client.BaseAddress);
             //client.DefaultRequestHeaders.Add("Accept", "application/json");
+
         }
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ObservableCollection<Employee> ListEmp = await GetEmpsAsync(client.BaseAddress + "emplist");
+            ObservableCollection<Employee> ListEmp = await GetEmpsAsync(url + "emplist");
             EmpDataGrid.ItemsSource = ListEmp;
         }
 
@@ -65,26 +66,6 @@ namespace Employees
         {
             PageDept DepartmentPage = new PageDept();
             this.NavigationService.Navigate(DepartmentPage);
-        }
-
-        private void EmpbtnAdd_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void EmpbtnDel_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void EmpbtnChg_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void DeptComboFiltr_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
 
 
