@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -14,7 +15,7 @@ namespace WebAPIServiceEmp.Controllers
 
 
         [Route("getlist")]
-        public List<Employee> Get() => data.GetList();
+        public ObservableCollection<Employee> Get() => data.GetList();
 
         [Route("getlist/{id}")]
         public Employee GetEmp(int id) => data.GetEmpById(id);

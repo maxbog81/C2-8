@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -21,10 +22,10 @@ namespace WebAPIServiceEmp.Models
             sqlConnection.Open();
         }
 
-        public List<Employee> GetList()
+        public ObservableCollection<Employee> GetList()
         {
-            List<Employee> list = new List<Employee>();
-
+            //List<Employee> ListEmp = new List<Employee>();
+            ObservableCollection<Employee>  ListEmp = new ObservableCollection<Employee>();
             string sql = @"SELECT * FROM Employee";
 
             using (SqlCommand com = new SqlCommand(sql, sqlConnection))
@@ -33,7 +34,7 @@ namespace WebAPIServiceEmp.Models
                 {
                     while (reader.Read())
                     {
-                        list.Add(
+                        ListEmp.Add(
                             new Employee()
                             {
                                 Id = (int)reader["id"],
@@ -45,7 +46,7 @@ namespace WebAPIServiceEmp.Models
 
             }
 
-            return list;
+            return ListEmp;
         }
 
         public Employee GetEmpById(int Id)
