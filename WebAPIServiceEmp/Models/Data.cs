@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
-
+//Создать базу Employees Создание таблиц и их наполнение происходит при запуске клиентской части
 namespace WebAPIServiceEmp.Models
 {
     
