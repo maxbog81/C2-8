@@ -22,7 +22,7 @@ namespace WebAPIServiceEmp.Models
             sqlConnection.Open();
         }
 
-        public ObservableCollection<Employee> GetList()
+        public ObservableCollection<Employee> GetEmpList()
         {
             //List<Employee> ListEmp = new List<Employee>();
             ObservableCollection<Employee>  ListEmp = new ObservableCollection<Employee>();
@@ -82,6 +82,71 @@ namespace WebAPIServiceEmp.Models
                                       N'{Worker.Dept}') ";
 
                 //Console.WriteLine(sqlAdd);
+
+                using (var com = new SqlCommand(sqlAdd, sqlConnection))
+                {
+                    com.ExecuteNonQuery();
+                }
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public ObservableCollection<Department> GetDeptList()
+        {
+            ObservableCollection<Department> ListDept = new ObservableCollection<Department>();
+            string sql = @"SELECT * FROM Department";
+
+            using (SqlCommand com = new SqlCommand(sql, sqlConnection))
+            {
+                using (SqlDataReader reader = com.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        ListDept.Add(
+                            new Department()
+                            {
+                                Dept = reader["dept"].ToString()
+                            });
+                    }
+                }
+
+            }
+
+            return ListDept;
+        }
+
+        public Department GetDept(string dept)
+        {
+            string sql = $@"SELECT * FROM Department WHERE dept={dept}";
+            Department temp = new Department();
+            using (SqlCommand com = new SqlCommand(sql, sqlConnection))
+            {
+                using (SqlDataReader reader = com.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+
+                        temp = new Department()
+                        {
+                            Dept = reader["dept"].ToString()
+                        };
+                    }
+                }
+
+            }
+            return temp;
+        }
+
+        public bool AddDept(Department Dept)
+        {
+            try
+            {
+                string sqlAdd = $@" INSERT INTO Department(dept)
+                               VALUES(N'{Dept.Dept}') ";
 
                 using (var com = new SqlCommand(sqlAdd, sqlConnection))
                 {

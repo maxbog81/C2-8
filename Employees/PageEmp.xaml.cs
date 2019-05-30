@@ -39,7 +39,7 @@ namespace Employees
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ObservableCollection<Employee> ListEmp = await GetEmpsAsync(client.BaseAddress + "getlist");
+            ObservableCollection<Employee> ListEmp = await GetEmpsAsync(client.BaseAddress + "emplist");
             EmpDataGrid.ItemsSource = ListEmp;
         }
 

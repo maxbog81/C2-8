@@ -14,16 +14,30 @@ namespace WebAPIServiceEmp.Controllers
         private Data data = new Data();
 
 
-        [Route("getlist")]
-        public ObservableCollection<Employee> Get() => data.GetList();
+        [Route("emplist")]
+        public ObservableCollection<Employee> GetEmpList() => data.GetEmpList();
 
-        [Route("getlist/{id}")]
+        [Route("emplist/{id}")]
         public Employee GetEmp(int id) => data.GetEmpById(id);
 
         [Route("addemp")]
-        public HttpResponseMessage Post([FromBody]Employee value)
+        public HttpResponseMessage PostEmp([FromBody]Employee value)
         {
             if (data.AddEmp(value))
+                return Request.CreateResponse(HttpStatusCode.Created);
+            else return Request.CreateResponse(HttpStatusCode.BadRequest);
+        }
+
+        [Route("deptlist")]
+        public ObservableCollection<Department> GetDeptList() => data.GetDeptList();
+
+        [Route("deptlist/{dept}")]
+        public Department GetDept(string dept) => data.GetDept(dept);
+
+        [Route("adddept")]
+        public HttpResponseMessage PostDept([FromBody]Department value)
+        {
+            if (data.AddDept(value))
                 return Request.CreateResponse(HttpStatusCode.Created);
             else return Request.CreateResponse(HttpStatusCode.BadRequest);
         }
